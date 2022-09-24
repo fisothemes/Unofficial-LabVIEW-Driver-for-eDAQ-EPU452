@@ -1,0 +1,147 @@
+You could also enter the string command "?" to bring up the list using Tera-term.
+
+System Commands:
+ help|?                                 This help
+ version                                Get firmware version
+ s|sample [hz]                          Sample at specified rate, 1Hz default
+ get rates                              Get available sample rates
+ i|interval <seconds>                   Interval sampling
+ r                                      Take a single reading
+ adc                                    Get raw ADC voltage values
+ prompt <on|off>                        Enable or disable the command prompt
+ get types                              Get a list of available function types
+ set name                               Set device name <name>
+ get name                               Get device name
+ get serial                             Get device serial number
+ set averaging <m>                      Set averaging period to <m> seconds (0.1
+                                        to 1.0)
+ get averaging                          Get averaging period
+ set channel <N> dp <n|auto>            Set the number of decimal places
+ get channel <N> dp                     Get the number of decimal places
+ get channel <N> function               Get the channel's current function
+ get functions                          Show all channels' current functions
+ set channel <N> function Off           Disable channel
+ set channel <N> function Volt          Configure channel as Voltmeter
+ set channel <N> function pH&ISE        Configure channel as pH/ISE
+ set channel <N> function RTD           Configure channel as Pt 1k RTD
+ set channel <N> function Therm         Configure channel as 10 k Thermistor
+ set channel <N> function dO2           Configure channel as dO2
+ set channel <N> function Bio           Configure channel as Biosensor
+ set channel <N> function Cond          Configure channel as Conductivity
+
+Channel 1: pH&ISE Commands:
+ set channel <N> range <value>          Set input range (2000, 200)
+ get channel <N> range                  Get input range
+ get channel <N> ranges                 Get available ranges
+ get channel <N> units                  Return the signal unit name
+ set channel <N> units <name>           Set the units reported when doing a
+                                        reading
+ set channel <N> units                  Revert to default units
+ cal channel <N> start <T>              Use ideal response from Nernst formula,
+                                        for pH calculations (n=1), at the
+                                        specified temperature
+ cal channel <N> start <T> <m> <E0>     Use Nernst equation, as above, but with
+                                        a specific ion charge <m>, and electrode
+                                        offset <E0>
+ cal channel <N> set <n> <m>            Take a reading and use as calibration
+                                        point number <n>, at the value <m>
+ cal channel <N> set <n> <pH> <mV>      Set calibration point number <n>, with
+                                        the specified <pH> and <mV> values
+ cal channel <N> remove <n>             Remove the <n>th calibration point
+ cal channel <N> remove all             Remove all calibration points
+ cal channel <N> get                    Show calibration information
+ calcph channel <N> <voltage>           Calculate pH for specified <voltage>
+ calcv channel <N> <pH>                 Calculate voltage for specified <pH>
+ mtc channel <N> <degC> [<IsoPotV>]     Set the temperature for making readings
+                                        (MTC).  Optionally override the default
+                                        isopotential of 0V
+ setatc channel <N> <ON/OFF> <m>        Set the ATC function ON/OFF using
+                                        channel <m> as the temperature input
+                                        channel
+
+Channel 2: Conductivity Commands:
+ set channel <N> range <value>          Set input range (200, 20, 2, 0.2, 0.02,
+                                        0.002)
+ get channel <N> range                  Get input range
+ get channel <N> ranges                 Get available ranges
+ get channel <N> k                      Get the k value
+ get channel <N> tds                    Get the tds value
+ set channel <N> k <m>                  Sets the k value of the conductivity
+                                        probe to <m>. If k is set to 0 then raw
+                                        conductances (G) are reported, otherwise
+                                        specific conductivity values are
+                                        reported
+ set channel <N> tds <m>                Set the tds factor to <m>.  If tds is
+                                        set to 0 then raw conductances (G) are
+                                        reported, otherwise tds is reported (in
+                                        ppm)
+ calc channel <N> k <m>                 Take a reading and calculate the correct
+                                        k to give the specified conductivity
+                                        value <m>
+ calc channel <N> tds <m>               Take a reading and calculate the tds
+                                        factor to give the specified tds value
+                                        <m>
+ get channel <N> ohms                   Take a single reading in ohms
+ set channel <N> offset <0|off>         Remove any input offset
+ set channel <N> offset auto            Automatically zero the input
+ set channel <N> offset <m>             Set the offset to <m> mS
+ get channel <N> offset                 Return the value of the zero offset
+ set channel <N> a <m> <degC>           Set the temperature coefficient a to <m>
+                                        in %/°C at given reference temperature
+                                        <degC> directly
+ get channel <N> a                      Return the temperature coefficient a in
+                                        %/°C and the reference temperature
+ set channel <N> TCcal <degC> <mS/cm>   Set the reference temperature and
+                                        conductivity parameters for temperature
+                                        coefficient calculation
+ set channel <N> TCsamp <degC> <mS/cm>  Set the sample temperature and
+                                        conductivity parameters for temperature
+                                        coefficient calculation
+ calcTC channel <N>                     Calculate the temperature coefficient
+                                        based on 2 sets of temperature and
+                                        conductivity parameters entered
+ removeTC channel <N>                   Remove the temperature coefficient and 2
+                                        sets of temperature and conductivity
+                                        parameters
+ setatc channel <N> <ON/OFF> <m>        Set the ATC function ON/OFF using
+                                        channel <m> as the temperature input
+                                        channel
+ get channel <N> atcstatus              Return ATC status for the channel
+
+Channel 3: RTD Commands:
+ set channel <N> range <value>          Set input range (125)
+ get channel <N> range                  Get input range
+ get channel <N> ranges                 Get available ranges
+ get channel <N> ohms                   Take a single reading in ohms
+
+Channel 4: Biosensor Commands:
+ set channel <N> range <value>          Set input range (2000000, 200000, 20000,
+                                        2000, 200, 20, 2mA, 200uA, 20uA, 2uA,
+                                        200nA, 20nA)
+ get channel <N> range                  Get input range
+ get channel <N> ranges                 Get available ranges
+ get channel <N> units                  Return signal unit name
+ set channel <N> units <name>           Set the units reported when doing a
+                                        reading
+ set channel <N> units                  Revert to default units
+ set channel <N> Vex <m>                Set Vex to <m> millivolts
+ get channel <N> Vex                    Get Vex
+ set channel <N> offset <0|off>         Remove any input offset
+ set channel <N> offset auto            Automatically zero the input
+ set channel <N> offset <m>             Set the offset to <m> nA
+ get channel <N> offset                 Return the value of the zero offset
+ get channel <N> res                    Take a reading and calculate resistance
+ cal channel <N> set <n> <m>            Take a reading and use as calibration
+                                        point number <n>, for known quantity <m>
+ cal channel <N> remove <n>             Remove the <n>th calibration point
+ cal channel <N> remove all             Remove all calibration points
+ cal channel <N> get                    Show calibration information
+
+Note that "channel" can be abbreviated to "c", "ch" or "chan".
+
+Advanced Commands:
+ get config                             Get system low-level configuration data
+ start config                           Start low-level reconfiguration
+ factoryreset                           Remove all configuration
+
+
